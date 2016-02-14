@@ -1,0 +1,1 @@
+# payum-yandex-money
