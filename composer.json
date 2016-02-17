@@ -1,7 +1,7 @@
 {
     "name": "boshurik/payum-yandex-money",
     "type": "library",
-    "description": "The Payum Yandex Money extension",
+    "description": "The Payum Yandex Money gateway",
     "keywords": ["payment", "payum", "yandex money"],
     "homepage": "http://payum.org",
     "license": "MIT",
