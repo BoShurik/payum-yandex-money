@@ -18,9 +18,8 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-4": { "BoShurik\\Payum\\YandexMoney": "" }
+        "psr-4": { "BoShurik\\Payum\\YandexMoney\\": "" }
     },
-    "target-dir": "BoShurik/Payum/YandexMoney",
     "extra": {
         "branch-alias": {
             "dev-master": "1.2-dev"
