@@ -1,0 +1,29 @@
+{
+    "name": "boshurik/payum-yandex-money",
+    "type": "library",
+    "description": "The Payum Yandex Money extension",
+    "keywords": ["payment", "payum", "yandex money"],
+    "homepage": "http://payum.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Borisov",
+            "email": "boshurik@gmail.com"
+        }
+    ],
+    "require": {
+        "payum/core": "^1.2"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": { "BoShurik\\Payum\\YandexMoney": "" }
+    },
+    "target-dir": "BoShurik/Payum/YandexMoney",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.2-dev"
+        }
+    }
+}
