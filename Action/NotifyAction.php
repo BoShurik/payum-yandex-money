@@ -10,6 +10,7 @@ namespace BoShurik\Payum\YandexMoney\Action;
 
 use Payum\Core\Action\GatewayAwareAction;
 use Payum\Core\ApiAwareInterface;
+use Payum\Core\Storage\StorageInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Reply\HttpResponse;
@@ -26,6 +27,19 @@ class NotifyAction extends GatewayAwareAction implements ApiAwareInterface
      * Implements ApiAwareInterface
      */
     use ApiAwareTrait;
+
+    /**
+     * @var StorageInterface
+     */
+    protected $tokenStorage;
+
+    /**
+     * @param StorageInterface $tokenStorage
+     */
+    public function __construct(StorageInterface $tokenStorage)
+    {
+        $this->tokenStorage = $tokenStorage;
+    }
 
     /**
      * {@inheritDoc}
@@ -51,6 +65,8 @@ class NotifyAction extends GatewayAwareAction implements ApiAwareInterface
         $model->replace(array(
             Api::FIELD_STATUS => Api::STATUS_CAPTURED,
         ));
+
+        $this->tokenStorage->delete($request->getToken());
 
         throw new HttpResponse('', 204);
     }

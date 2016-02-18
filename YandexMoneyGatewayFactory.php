@@ -23,15 +23,15 @@ class YandexMoneyGatewayFactory extends GatewayFactory
      */
     protected function populateConfig(ArrayObject $config)
     {
-        $config->defaults([
+        $config->defaults(array(
             'payum.factory_name' => 'yandex_money',
             'payum.factory_title' => 'Yandex Money',
             'payum.action.capture' => new CaptureAction(),
-            'payum.action.notify' => new NotifyAction(),
+            'payum.action.notify' => new NotifyAction($config['payum.security.token_storage']),
             'payum.action.notify_null' => new NotifyNullAction(),
             'payum.action.status' => new StatusAction(),
             'payum.action.convert_payment' => new ConvertPaymentAction(),
-        ]);
+        ));
 
         if (false == $config['payum.api']) {
             $config['payum.default_options'] = array(
