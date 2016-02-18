@@ -27,6 +27,29 @@ $payum = (new PayumBuilder())
 ;
 ```
 
+## Payment
+
+### Additional parameters
+
+* Payment type (YandexMoney `paymentType` option)
+```php
+use BoShurik\Payum\YandexMoney\Api;
+
+/** @var Payment $payment */
+$payment->setDetails(array(
+    Api::FIELD_PAYMENT_TYPE => Api::PAYMENT_AC, // Default
+));
+```
+* Form type (YandexMoney `quickpay-form` option)
+```php
+use BoShurik\Payum\YandexMoney\Api;
+
+/** @var Payment $payment */
+$payment->setDetails(array(
+    Api::FIELD_QUICKPAY_FORM => Api::QUICKPAY_FORM_SHOP, // Default
+));
+```
+
 ## Symfony
 
 ### Installation
@@ -68,4 +91,5 @@ payum:
 ```
 
 ## Resources
-* [Payum](http://payum.org/)
+* [Payum](http://payum.org)
+* [Yandex](https://money.yandex.ru/doc.xml?id=526991)
