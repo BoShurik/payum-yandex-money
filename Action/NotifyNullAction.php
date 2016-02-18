@@ -36,7 +36,7 @@ class NotifyNullAction extends GatewayAwareAction
         }
 
         $this->gateway->execute($getToken = new GetToken($httpRequest->request['label']));
-        $this->gateway->execute(new Notify($getToken->getToken()));
+        $this->gateway->execute(new Notify($getToken->getToken()), true);
     }
 
     /**
