@@ -58,7 +58,8 @@ class NotifyAction extends GatewayAwareAction implements ApiAwareInterface
             throw new HttpResponse('The notification is invalid. [2]', 400);
         }
 
-        if ($model['amount'] != $httpRequest->request['withdraw_amount']) {
+        if ($model['amount'] != $httpRequest->request['withdraw_amount'] &&
+            $model['amount'] != $httpRequest->request['amount']) {
             throw new HttpResponse('The notification is invalid. [3]', 400);
         }
 
