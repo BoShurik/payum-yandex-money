@@ -73,7 +73,7 @@ class NotifyAction extends GatewayAwareAction implements ApiAwareInterface
 
         $this->tokenStorage->delete($request->getToken());
 
-        throw new HttpResponse('', 204);
+        throw new HttpResponse('', 200);
     }
 
     /**
