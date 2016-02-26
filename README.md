@@ -6,6 +6,12 @@
 $ composer require boshurik/payum-yandex-money
 ```
 
+## Yandex configuration
+
+In your [**profile**][1]
+* Enable http-notification
+* Set http-address for notifications. For `PayumBundle` users it would be `https://example.com/payment/notify/unsafe/yandex_money`
+
 ## Configuration
 
 ```php
@@ -93,3 +99,5 @@ payum:
 ## Resources
 * [Payum](http://payum.org)
 * [Yandex](https://money.yandex.ru/doc.xml?id=526991)
+
+[1]: https://money.yandex.ru/myservices/online.xml
