@@ -60,6 +60,8 @@ $payment->setDetails(array(
 
 ### Installation
 
+#### 1.x
+
 ```php
 <?php
 namespace AppBundle;
@@ -86,7 +88,22 @@ class AppBundle extends Bundle
 }
 ```
 
+#### 2.x
+
+```yaml
+services:
+    app.yandex_money.gateway_factory_builder:
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        arguments:
+            - BoShurik\Payum\YandexMoney\YandexMoneyGatewayFactory
+        tags:
+            - { name: payum.gateway_factory_builder, factory: yandex_money }
+```
+
 ### Configuration
+
+#### 1.x
+
 ```yaml
 payum:
     gateways:
@@ -96,6 +113,16 @@ payum:
                 secret: %yandex_secret%
 ```
 
+#### 2.x
+
+```yaml
+payum:
+    gateways:
+        yandex_money:
+            factory: yandex_money
+            account: %yandex_account%
+            secret: %yandex_secret%
+```
 ## Resources
 * [Payum](http://payum.org)
 * [Yandex](https://money.yandex.ru/doc.xml?id=526991)
