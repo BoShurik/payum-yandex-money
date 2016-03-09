@@ -32,7 +32,9 @@ class NotifyNullAction extends GatewayAwareAction
         $this->gateway->execute($httpRequest = new GetHttpRequest());
 
         if (!isset($httpRequest->request['label']) || empty($httpRequest->request['label'])) {
-            throw new HttpResponse('The notification is invalid. [1]', 400);
+            throw new HttpResponse('The notification is invalid. [1]', 400, array(
+                'x-reason-code' => 1,
+            ));
         }
 
         $this->gateway->execute($getToken = new GetToken($httpRequest->request['label']));

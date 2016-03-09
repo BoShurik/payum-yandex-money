@@ -55,16 +55,22 @@ class NotifyAction extends GatewayAwareAction implements ApiAwareInterface
         $this->gateway->execute($httpRequest = new GetHttpRequest());
 
         if (false == $this->api->verifyRequest($httpRequest->request)) {
-            throw new HttpResponse('The notification is invalid. [2]', 400);
+            throw new HttpResponse('The notification is invalid. [2]', 400, array(
+                'x-reason-code' => 2,
+            ));
         }
 
         if ($model['amount'] != $httpRequest->request['withdraw_amount'] &&
             $model['amount'] != $httpRequest->request['amount']) {
-            throw new HttpResponse('The notification is invalid. [3]', 400);
+            throw new HttpResponse('The notification is invalid. [3]', 400, array(
+                'x-reason-code' => 3,
+            ));
         }
 
         if ('true' === $httpRequest->request['unaccepted']) {
-            throw new HttpResponse('The notification is invalid. [4]', 400);
+            throw new HttpResponse('The notification is invalid. [4]', 400, array(
+                'x-reason-code' => 4,
+            ));
         }
 
         $model->replace(array(
@@ -73,7 +79,9 @@ class NotifyAction extends GatewayAwareAction implements ApiAwareInterface
 
         $this->tokenStorage->delete($request->getToken());
 
-        throw new HttpResponse('', 200);
+        throw new HttpResponse('', 200, array(
+            'x-reason-code' => 0,
+        ));
     }
 
     /**
